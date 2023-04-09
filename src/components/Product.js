@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Product = ({ product }) => {
   const [red, setRed] = useState(false);
   const handleClick = (id) => {
@@ -45,16 +46,18 @@ const Product = ({ product }) => {
           >
             {" "}
             {red ? (
-              <AiOutlineHeart className="text-2xl" />
-            ) : (
               <AiFillHeart className="text-2xl text-red-400" />
+            ) : (
+              <AiOutlineHeart className="text-2xl" />
             )}
             Wishlist
           </span>
 
-          <button className="bg-yellow-500 px-4 py-2 rounded-md">
-            Add To Cart
-          </button>
+          <Link to={`/product/${product.id}`}>
+            <button className="bg-yellow-500 px-4 py-2 rounded-md">
+              See Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
