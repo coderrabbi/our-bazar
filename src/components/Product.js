@@ -31,13 +31,12 @@ const Product = ({ product }) => {
         </p>
         <div className="flex justify-between">
           <div className="">
-            {" "}
-            <span>$ {product?.price}</span>
+            <span>${product?.price}</span>
             <span className="flex items-center">
-              <AiFillStar /> {product?.rating.rate}
+              <AiFillStar className="text-primary" /> {product?.rating.rate}
+              <span>({product?.rating.count})</span>
             </span>
           </div>
-          <span>Sales: {product?.rating.count}</span>
         </div>
         <div className="card-actions items-center justify-between">
           <span
