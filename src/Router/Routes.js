@@ -7,6 +7,8 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import PrivetRouter from "./PrivetRouter";
 import MyAccount from "../pages/Dashboard/MyAccount";
+import AddProduct from "../pages/Dashboard/AddProduct";
+import ProductList from "../pages/Dashboard/ProductList";
 
 export const routes = createBrowserRouter([
   {
@@ -20,7 +22,7 @@ export const routes = createBrowserRouter([
       {
         path: "/product/:id",
         loader: ({ params }) =>
-          fetch(`https://fakestoreapi.com/products/${params.id}`),
+          fetch(`http://localhost:5000/api/product/${params.id}`),
         element: <ProductDetailsPage />,
       },
       { path: "/register", element: <Register /> },
@@ -34,6 +36,11 @@ export const routes = createBrowserRouter([
         <DashboardLayout />
       </PrivetRouter>
     ),
-    children: [{ path: "/dashboard/myprofile", element: <MyAccount /> }],
+    children: [
+      { path: "/dashboard", element: <MyAccount /> },
+
+      { path: "/dashboard/addproduct", element: <AddProduct /> },
+      { path: "/dashboard/myproducts", element: <ProductList /> },
+    ],
   },
 ]);

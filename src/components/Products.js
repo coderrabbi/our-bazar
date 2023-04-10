@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import Product from "./Product";
 import Loader from "./Loader";
 import axiosInstance from "../utils/axiosInstance";

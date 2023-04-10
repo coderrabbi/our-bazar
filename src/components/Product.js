@@ -59,7 +59,7 @@ const Product = ({ product }) => {
             Wishlist
           </span>
 
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product._id}`}>
             <button className="bg-yellow-500 px-4 py-2 rounded-md">
               See Details
             </button>
