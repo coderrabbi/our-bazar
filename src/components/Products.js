@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./Product";
 import Loader from "./Loader";
+import axiosInstance from "../utils/axiosInstance";
 const Products = () => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/allproducts")
+    axiosInstance
+      .get("/api/allproducts")
       .then((response) => setProducts(response.data));
   }, []);
   return (
@@ -20,7 +21,11 @@ const Products = () => {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-4 ">
           {products?.map((product) => (
-            <Product product={product} className="h-[200px]" />
+            <Product
+              key={product._id}
+              product={product}
+              className="h-[200px]"
+            />
           ))}
         </div>
       )}

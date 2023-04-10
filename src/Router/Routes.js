@@ -5,6 +5,8 @@ import ProductDetailsPage from "../pages/ProductDetailsPage";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import PrivetRouter from "./PrivetRouter";
+import MyAccount from "../pages/Dashboard/MyAccount";
 
 export const routes = createBrowserRouter([
   {
@@ -27,6 +29,11 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivetRouter>
+        <DashboardLayout />
+      </PrivetRouter>
+    ),
+    children: [{ path: "/dashboard/myprofile", element: <MyAccount /> }],
   },
 ]);

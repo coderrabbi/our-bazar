@@ -1,13 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
-import axiosInstance from "../utils/axiosInstance";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { AuthContext } from "../context/AuthProvider";
 const Register = () => {
   const [value, setValue] = useState();
-  console.log(value);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const { createUser, currentUser } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,21 +28,18 @@ const Register = () => {
     const phoneNumberRegex = /^(?:(?:\+|00)88|01)?(?:\d{11}|\d{13})$/;
 
     if (phoneNumberRegex.test(phoneNumber)) {
-      const { data } = await axiosInstance.post("/api/register", userInfo, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      console.log(data);
+      createUser(userInfo);
     } else {
       toast.error("Invalid Bangladeshi phone number");
     }
   };
+  useEffect(() => {
+    currentUser && navigate(from, { replace: true });
+  }, [from, currentUser, navigate]);
   return (
     <section className="flex flex-col md:flex-row h-screen items-center">
       <div
-        className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0  md:w-1/2 xl:w-1/2 h-screen px-6 lg:px-16 xl:px-12
+        className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/2 h-screen px-6 lg:px-16 xl:px-12
         flex items-center justify-center"
       >
         <div className="w-full h-100">

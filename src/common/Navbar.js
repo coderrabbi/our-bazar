@@ -1,7 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setCurrentUser(null);
+    navigate("/login");
+  };
   return (
     <div className="sticky top-0 z-50">
       <div className="navbar  bg-primary">
@@ -46,33 +56,57 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  alt="kj"
-                />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <Link>Logout</Link>
-              </li>
-            </ul>
-          </div>
+          {currentUser ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    alt="kj"
+                  />
+                </div>
+              </label>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                  <span onClick={handleLogOut}>Log Out</span>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              {currentUser === {} || currentUser === null ? (
+                <div className="flex gap-4 items-center">
+                  <Link
+                    to="/login"
+                    className="px-4 py-1 bg-black text-white rounded-md  "
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="px-4 py-1 bg-white text-black rounded-md "
+                  >
+                    registation
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

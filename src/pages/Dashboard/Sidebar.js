@@ -21,9 +21,8 @@ const Sidebar = () => {
             <ul className="space-y-2 tracking-wide mt-8">
               <li>
                 <Link
-                  to="/dashboard"
+                  to="/dashboard/myprofile"
                   className="px-4 py-3 flex items-center  space-x-4 rounded-xl text-black focus:text-white focus:bg-gradient-to-r  focus:from-yellow-700 focus:to-yellow-400"
-                  // onMouseLeave={() => setIsActive(false)}
                 >
                   <span className="-mr-1 font-medium">My Account</span>
                 </Link>
