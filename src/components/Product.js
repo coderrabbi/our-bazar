@@ -33,8 +33,15 @@ const Product = ({ product }) => {
           <div className="">
             <span>${product?.price}</span>
             <span className="flex items-center">
-              <AiFillStar className="text-primary" /> {product?.rating.rate}
-              <span>({product?.rating.count})</span>
+              {product?.rating?.rate ? (
+                <>
+                  <AiFillStar className="text-primary" />{" "}
+                  {product?.rating?.rate}
+                  <span>({product?.rating?.count})</span>
+                </>
+              ) : (
+                ""
+              )}
             </span>
           </div>
         </div>
