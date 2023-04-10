@@ -3,6 +3,8 @@ import Main from "../common/Main";
 import Home from "../pages/Home";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import DashboardLayout from "../Layout/DashboardLayout";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 export const routes = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ export const routes = createBrowserRouter([
           fetch(`https://fakestoreapi.com/products/${params.id}`),
         element: <ProductDetailsPage />,
       },
+      { path: "/register", element: <Register /> },
+      { path: "/login", element: <Login /> },
     ],
   },
   {

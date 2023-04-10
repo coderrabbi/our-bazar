@@ -53,3 +53,9 @@ code {
     transform: translateY(10px);
   }
 }
+.PhoneInputInput {
+  flex: 1 1;
+  min-width: 0;
+  outline: none !important;
+  background: none !important;
+}
