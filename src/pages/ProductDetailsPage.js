@@ -10,11 +10,11 @@ const ProductDetailsPage = () => {
   const { product } = useLoaderData();
   const { currentUser } = useContext(AuthContext);
   const productInfo = {
-    title: product.title,
-    imgUrl: product.imgUrl,
-    description: product.description,
-    category: product.category,
-    price: product.price,
+    title: product?.title,
+    imgUrl: product?.imgUrl,
+    description: product?.description,
+    category: product?.category,
+    price: product?.price,
     email: currentUser?.email,
   };
   const handleClick = async () => {

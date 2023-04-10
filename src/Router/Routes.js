@@ -24,7 +24,7 @@ export const routes = createBrowserRouter([
       {
         path: "/product/:id",
         loader: ({ params }) =>
-          fetch(`https://our-bazar-server.vercel.app/${params.id}`),
+          fetch(`https://our-bazar-server.vercel.app/api/product/${params.id}`),
         element: <ProductDetailsPage />,
       },
       { path: "/register", element: <Register /> },
