@@ -7,10 +7,11 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 const Register = () => {
   const [value, setValue] = useState();
+  console.log(value);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const phoneNumber = form.number.value;
+    const phoneNumber = value;
     const name = form.name.value;
     const password = form.password.value;
     const email = form.email.value;
