@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { AuthContext } from "../../context/AuthProvider";
-import { CiEdit, CiTrash } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { CiTrash } from "react-icons/ci";
+
 import { toast } from "react-hot-toast";
 const ProductList = () => {
   const { currentUser } = useContext(AuthContext);

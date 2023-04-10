@@ -63,9 +63,6 @@ const ProductDetailsPage = () => {
               >
                 Add To Cart
               </button>
-              <button className="bg-green-500 text-white md:px-6 md:py-2 px-2 py-2">
-                Buy Now
-              </button>
             </div>
           </div>
         </div>
@@ -75,11 +72,11 @@ const ProductDetailsPage = () => {
         {product?.description}
       </p>
       <div className="md:hidden flex gap-4  items-end">
-        <button className="bg-primary md:px-6 md:py-2 px-2 py-2">
+        <button
+          onClick={handleClick}
+          className="bg-primary md:px-6 md:py-2 px-2 py-2"
+        >
           Add To Cart
-        </button>
-        <button className="bg-green-500 text-white md:px-6 md:py-2 px-2 py-2">
-          Buy Now
         </button>
       </div>
     </div>

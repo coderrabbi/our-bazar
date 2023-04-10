@@ -10,6 +10,7 @@ import MyAccount from "../pages/Dashboard/MyAccount";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import ProductList from "../pages/Dashboard/ProductList";
 import OrderList from "../pages/Dashboard/OrderList";
+import Products from "../components/Products";
 
 export const routes = createBrowserRouter([
   {
@@ -23,11 +24,12 @@ export const routes = createBrowserRouter([
       {
         path: "/product/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/product/${params.id}`),
+          fetch(`https://our-bazar-server.vercel.app/${params.id}`),
         element: <ProductDetailsPage />,
       },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
+      { path: "/products", element: <Products /> },
     ],
   },
   {

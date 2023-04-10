@@ -26,12 +26,6 @@ const MyAccount = () => {
             </div>
           </div>
         </div>
-
-        <div className="mt-7">
-          <button className="font-bold text-yellow-500 underline">
-            Delete Your Account
-          </button>
-        </div>
       </div>
     </div>
   );

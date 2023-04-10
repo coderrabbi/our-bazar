@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [myOrder, setMyOrder] = useState([]);
   const createUser = async (userInfo) => {
     const { data } = await axiosInstance.post("/api/register", userInfo, {
       headers: {
@@ -48,7 +48,15 @@ const AuthProvider = ({ children }) => {
     }
     return JSON.parse(user);
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axiosInstance
+      .get(`/api/order?email=${currentUser?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => setMyOrder(res.data.order));
+  }, [currentUser?.email]);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -78,6 +86,8 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     loading,
+    setMyOrder,
+    myOrder,
     setLoading,
   };
   return (

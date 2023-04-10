@@ -76,7 +76,6 @@ const Login = () => {
               Log In
             </button>
           </form>
-
           <p className="mt-8">
             Need an account?{" "}
             <Link

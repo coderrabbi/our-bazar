@@ -1,22 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { CiEdit, CiTrash } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { CiTrash } from "react-icons/ci";
+
 import axiosInstance from "../../utils/axiosInstance";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const OrderList = () => {
-  const [myOrder, setMyOrder] = useState([]);
-  const { currentUser } = useContext(AuthContext);
-  useEffect(() => {
-    axiosInstance
-      .get(`/api/order?email=${currentUser?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => setMyOrder(res.data.product));
-  }, [currentUser.email]);
+  const { myOrder, setMyOrder } = useContext(AuthContext);
   const handelDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (confirm) {
