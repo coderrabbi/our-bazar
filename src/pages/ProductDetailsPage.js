@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import styles from "../style";
 import { AiFillStar } from "react-icons/ai";
+import axiosInstance from "../utils/axiosInstance";
+import { AuthContext } from "../context/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const ProductDetailsPage = () => {
   const { product } = useLoaderData();
-
+  const { currentUser } = useContext(AuthContext);
+  const productInfo = {
+    title: product.title,
+    imgUrl: product.imgUrl,
+    description: product.description,
+    category: product.category,
+    price: product.price,
+    email: currentUser?.email,
+  };
+  const handleClick = async () => {
+    await axiosInstance
+      .post("/api/order", productInfo, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          toast.success("Add To Cart successfully");
+        }
+      });
+  };
   return (
     <div className={`${styles.padding}   `}>
       <div className="flex gap-4">
