@@ -9,6 +9,7 @@ import PrivetRouter from "./PrivetRouter";
 import MyAccount from "../pages/Dashboard/MyAccount";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import ProductList from "../pages/Dashboard/ProductList";
+import OrderList from "../pages/Dashboard/OrderList";
 
 export const routes = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ export const routes = createBrowserRouter([
 
       { path: "/dashboard/addproduct", element: <AddProduct /> },
       { path: "/dashboard/myproducts", element: <ProductList /> },
+      { path: "/dashboard/myorder", element: <OrderList /> },
     ],
   },
 ]);

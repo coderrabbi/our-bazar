@@ -32,10 +32,10 @@ const Sidebar = () => {
 
               <li>
                 <Link
-                  to="/dashboard"
+                  to="/dashboard/myorder"
                   className="px-4 py-3 flex items-center  space-x-4 rounded-xl text-black focus:text-white focus:bg-gradient-to-r  focus:from-yellow-700 focus:to-yellow-400"
                 >
-                  <span className="group-hover:text-gray-700">All Orders</span>
+                  <span className="group-hover:text-gray-700">My Orders</span>
                 </Link>
               </li>
 

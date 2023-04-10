@@ -39,7 +39,7 @@ const ProductList = () => {
       {myProducts?.length === 0 ? (
         <div>
           <h1 className="text- text-[70px] text-center text-bold">
-            NO REVIEW FOUND
+            NO PRODUCT FOUND
           </h1>
         </div>
       ) : (
@@ -48,14 +48,12 @@ const ProductList = () => {
             <thead className="text-xs text-gray-700 uppercase bg-gray-50  dark:text-gray-400">
               <tr>
                 <th scope="col" className="py-3 px-6">
-                  Service Title
+                  Title
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Review
+                  Description
                 </th>
-                <th scope="col" className="py-3 px-6">
-                  Edit
-                </th>
+
                 <th scope="col" className="py-3 px-6">
                   Delete
                 </th>
@@ -77,16 +75,6 @@ const ProductList = () => {
                     {pd?.description.slice(0, 100) + "..."}
                   </td>
 
-                  <td className="py-4 px-6">
-                    <span className="flex justify-between items-center">
-                      <Link
-                        to={pd?._id}
-                        className="font-medium text-yellow-600 dark:text-yellow-500 hover:underline"
-                      >
-                        <CiEdit className="text-3xl" />
-                      </Link>
-                    </span>
-                  </td>
                   <td className="py-4 px-6">
                     <span className="flex justify-between items-center">
                       <CiTrash
